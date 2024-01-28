@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    {% block title %}
+  <title>Signup</title>
+    {% endblock %}
+</head>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.col-sm-6 {
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+}
+
+.display-4 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 2px solid #007bff;
+    border-radius: 0;
+    padding: 10px;
+    background-color: transparent;
+    transition: border-color 0.3s;
+    width: 100%;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+
+.hint {
+    font-size: 14px;
+    color: #888;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+}
+
+.btn-custom {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+.font-italic {
+    text-align: center;
+    color: #888;
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.font-italic:hover {
+    color: #007bff;
+}
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+</style>
+{% block body %}
+
+     <div class="container-fluid">
+        <div class="row no-gutter">
+            <!-- The content half -->
+            <div class="col-sm-6 mx-auto bg-light">
+                <div class=" align-items-center py-5">
+
+                    <!-- Demo content-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 mx-auto">
+                                <h3 class="display-4 text-center">Sign Up</h3>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group mb-3">
+                                        <input type="text" placeholder="Username" name="uname" required=""
+                                               autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        <span class="hint">e.g. johnwick</span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="text" placeholder="First Name" name="first_name" required=""
+                                               autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        <span class="hint">e.g. John</span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="text" placeholder="Last Name" name="last_name"
+                                               autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        <span class="hint">e.g. Wick</span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="email" placeholder="Email Address" name="email" required=""
+                                               autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        <span class="hint">e.g. johnwick@mail.com</span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="password" placeholder="Password" name="pward" required=""
+                                               class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                        <span class="hint"></span>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input type="password" placeholder="Confirm Password" name="cpward" required=""
+                                               class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                    </div>
+                                    <!--<div class="custom-control custom-checkbox mb-3">
+                                        <input id="customCheck1" type="checkbox" checked class="custom-control-input">
+                                        <label for="customCheck1" class="custom-control-label">Remember password</label>
+                                    </div>-->
+                                    <button type="submit"
+                                            class="btn btn-custom btn-block text-uppercase mb-2 rounded-pill shadow-sm"
+                                            style="width: 100%">Sign up
+                                    </button>
+                                    <div class="text-center d-flex justify-content-between mt-4">Already have an account?
+                                        <a href="/login/" class="font-italic text-muted"> CLICK HERE</a>
+                                    </div>
+                                </form>
+                                {% if messages %}
+                                    <div class="alert alert-danger">
+                                        {% for i in messages %}
+                                            {{ i }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div><!-- End -->
+
+                </div>
+            </div><!-- End -->
+
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
